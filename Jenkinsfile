@@ -1,21 +1,25 @@
 pipeline {
     
     agent any
-    
+
+    options {
+        timestamps ()
+    }
+
     stages {
         
-        stage('First Stage') {
+        stage('Checkout Stage') {
             steps {
-                sh "exit 0"
+                git branch: 'main',
+                url: 'https://github.com/ochirkov/cicd-sessions-repo.git'
             }
-            
         }
-        
-        stage('Second Stage') {
+
+        stage('Linters Stage') {
             steps {
-                echo "foo"
+                sh "ls -l"
+                sh "tox -e linters"
             }
-            
         }        
     }
 }
