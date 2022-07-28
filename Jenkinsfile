@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-        
+
         stage('Checkout Stage') {
             steps {
                 git branch: 'main',
@@ -31,6 +31,12 @@ pipeline {
                     }
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
         }
     }
 }
