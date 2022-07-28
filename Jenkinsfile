@@ -17,9 +17,15 @@ pipeline {
 
         stage('Docs Stage') {
             steps {
-                sh "ls -l"
-                sh "tox -e docs"
+                echo "it is docs stage"
+                //sh "tox -e docs"
             }
-        }        
+        }
+
+        stage('Linters Stage') {
+            steps {
+                echo "it is linters stage"
+            }
+        }
     }
 }
